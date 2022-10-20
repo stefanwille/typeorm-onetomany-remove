@@ -9,6 +9,9 @@ export class Photo {
   @Column()
   url: string;
 
-  @ManyToOne(() => User, (user) => user.photos, { onDelete: "CASCADE" })
+  @ManyToOne(() => User, (user) => user.photos, {
+    onDelete: "CASCADE",
+    nullable: false,
+  })
   user: User;
 }
