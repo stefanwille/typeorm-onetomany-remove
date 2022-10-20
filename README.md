@@ -1,6 +1,8 @@
 # TypeOrm OneToMany Relationship Demo
 
-Demonstrates a OneToMany relationship in TypeORM. Especially it shows how to delete elements from the OneToMany side.
+Demonstrates a OneToMany relationship in TypeORM.
+
+The most difficult part was to find out how to delete elements from the OneToMany side. This is solved in this demo.
 
 Steps to run this project:
 
