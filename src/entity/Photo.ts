@@ -11,7 +11,6 @@ export class Photo {
 
   @ManyToOne(() => User, (user) => user.photos, {
     nullable: false,
-    onDelete: "CASCADE",
     orphanedRowAction: "delete",
   })
   user: User;

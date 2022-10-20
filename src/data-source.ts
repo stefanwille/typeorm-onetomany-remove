@@ -11,7 +11,7 @@ export const AppDataSource = new DataSource({
   password: "root",
   database: "typeorm-onetomany-remove",
   synchronize: true,
-  logging: true,
+  logging: false,
   entities: [User, Photo],
   migrations: [],
   subscribers: [],
