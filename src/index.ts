@@ -5,6 +5,9 @@ import { User } from "./entity/User";
 const main = async () => {
   await AppDataSource.initialize();
 
+  const oldUsers = await AppDataSource.manager.find(User);
+  await AppDataSource.manager.remove(oldUsers);
+
   console.log("Inserting a new user into the database...");
   const user = new User();
   user.firstName = "Timber";
