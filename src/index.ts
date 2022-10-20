@@ -1,3 +1,4 @@
+import { exit } from "process";
 import { AppDataSource } from "./data-source";
 import { Photo } from "./entity/Photo";
 import { User } from "./entity/User";
@@ -5,8 +6,8 @@ import { User } from "./entity/User";
 const main = async () => {
   await AppDataSource.initialize();
 
-  const oldUsers = await AppDataSource.manager.find(User);
-  await AppDataSource.manager.remove(oldUsers);
+  console.log("Deleting all old users...");
+  await AppDataSource.manager.delete(User, {});
 
   console.log("Inserting a new user into the database...");
   const user = new User();
@@ -25,9 +26,16 @@ const main = async () => {
   const users = await AppDataSource.manager.find(User);
   console.log("Loaded users: ", users);
 
-  console.log(
-    "Here you can setup and run express / fastify / any other framework."
-  );
+  console.log("Removing photos from user...");
+  const loadedUser = users[0];
+  loadedUser.photos = [];
+  await AppDataSource.manager.save(loadedUser);
+
+  console.log("Loading users from the database...");
+  const reloadedUsers = await AppDataSource.manager.find(User);
+  console.log("Loaded users: ", reloadedUsers);
+
+  exit();
 };
 
 main();
