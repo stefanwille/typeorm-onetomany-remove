@@ -27,9 +27,9 @@ const main = async () => {
   console.log("Loaded users: ", users);
 
   console.log("Removing photos from user...");
-  const loadedUser = users[0];
-  loadedUser.photos = [];
-  await AppDataSource.manager.save(loadedUser);
+  const userToUpdate = users[0];
+  userToUpdate.photos = [];
+  await AppDataSource.manager.save(userToUpdate);
 
   console.log("Loading users from the database...");
   const reloadedUsers = await AppDataSource.manager.find(User);

@@ -10,8 +10,9 @@ export class Photo {
   url: string;
 
   @ManyToOne(() => User, (user) => user.photos, {
-    onDelete: "CASCADE",
     nullable: false,
+    onDelete: "CASCADE",
+    orphanedRowAction: "delete",
   })
   user: User;
 }

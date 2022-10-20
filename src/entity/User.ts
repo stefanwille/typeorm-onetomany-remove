@@ -16,8 +16,7 @@ export class User {
   age: number;
 
   @OneToMany(() => Photo, (photo) => photo.user, {
-    cascade: ["insert", "update", "remove", "soft-remove", "recover"],
-    orphanedRowAction: "delete",
+    cascade: true,
     eager: true,
   })
   photos: Photo[];
